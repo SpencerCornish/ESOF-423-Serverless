@@ -1,4 +1,4 @@
-module github.com/SpencerCornish/bsc-serverless/createuser
+module github.com/SpencerCornish/bsc-serverless/removeuserlogin
 
 go 1.12
 
