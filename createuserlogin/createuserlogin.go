@@ -60,7 +60,7 @@ func CreateUserLogin(w http.ResponseWriter, r *http.Request) {
 
 	// Unmarshal the JSON into the `load` map
 	err := json.Unmarshal(buffer.Bytes(), &load)
-	if err != nil {
+	if err != nil || len(load) == 0 {
 		log.Printf("Error: could not parse JSON payload: %v", err)
 		w.WriteHeader(http.StatusBadRequest)
 		return

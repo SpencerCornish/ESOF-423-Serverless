@@ -1,0 +1,1 @@
+gcloud functions deploy createUserLogin --entry-point CreateUserLogin --runtime go111 --trigger-http
