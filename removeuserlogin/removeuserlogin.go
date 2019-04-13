@@ -63,11 +63,9 @@ func init() {
 // if they had a login provisioned.
 func RemoveUserLogin(ctx context.Context, e FirestoreEvent) error {
 
-	log.Printf("Userdocument was deleted. \n OldValue: %v\nNewValue:%v\nUpdateMask:%v", e.OldValue, e.Value, e.UpdateMask)
-	log.Printf("oldData fields: %v", e.OldValue.Fields)
 	fieldMap := e.OldValue.Fields.(map[string]interface{})
 
-	deletedUserLoginUID := fieldMap["login_uid"].(string)
+	deletedUserLoginUID := fieldMap["login_uid"].(map[string]interface{})["stringValue"].(string)
 	if deletedUserLoginUID == "" {
 		log.Printf("Deleted user did not have a login uid. Exiting")
 		return nil
